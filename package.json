@@ -1,0 +1,21 @@
+{
+  "name": "fluxchat",
+  "version": "1.0.0",
+  "description": "A simple ChatBot Built with node, express, vuejs",
+  "main": "server/app.js",
+  "scripts": {
+    "test": "",
+    "start": "node server/app.js",
+    "dev": "nodemon server/app.js"
+  },
+  "author": "Gedoni Ani",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
