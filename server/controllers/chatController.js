@@ -8,7 +8,7 @@ const respondToMessage = (message) => {
     switch (message.toLowerCase().trim()) {
         case "hi":
             case "hello":
-              return `Welcome to Marvel Tech to Begin Select an option:\n1. Contract\n2. Supervision`;            
+              return `To Begin Select an option below:\n1. Contract\n2. Supervision`;            
             case "contract":
 
             //options
@@ -21,10 +21,10 @@ const respondToMessage = (message) => {
             //contract mode
             case "contract upstairs":
               return `You have selected the contract upstairs option.
-              Select an option: \n1.Contract mode`;           
+              Select an option: \n 1.Contract mode`;           
             case "contract downstairs":
               return `You have selected the contract downstairs option.
-              Select an option: \n1.Contract mode`;                   
+              Select an option: \n 1.Contract mode`;                   
             case "contract mode":
                 return `Now select the payment type: \n1.Half \n2.Full`;
             case "half":

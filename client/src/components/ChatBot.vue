@@ -28,7 +28,7 @@
             <button v-if="!isChatEnded" @click="confirmEndChat" class="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out font-semibold text-gray-700 bg-gray-50 focus:outline-none">End Chat</button>
          </div>    
         </div>
-        <button class="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out font-semibold text-gray-700 bg-gray-50 focus:outline-none" v-if="isChatEnded" @click="startNewChat">Start New Chat with (Hello or Hi)</button>
+        <button class="inline-flex items-center justify-center rounded-lg px-4 py-3 transition duration-500 ease-in-out font-semibold text-gray-700 bg-gray-50 focus:outline-none" v-if="isChatEnded" @click="startNewChat">Welcome to Marvel Tech <br> Click Here to Start A New Chat with (Hello or Hi)</button>
         <div class="flex flex-col space-y-4 p-3 overflow-y-auto scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch">
             
             <div v-for="(message, index) in messages" :key="index" v-if="!isChatEnded" 
@@ -39,10 +39,19 @@
                       alt="Chatbot" class="w-6 h-6 rounded-full order-2" />                      
                   <div
                       :class="{ 'flex flex-col space-y-2 text-1xl max-w-xs mx-2 order-1 items-end': message.isBot, 'flex flex-col space-y-2 text-1xl max-w-xs mx-2 order-2 items-start': !message.isBot }">
-                      <div>                       
+                      <div>  
+                        <p v-if="message.isBot" class="text-gray-900 font-semibold text-sm py-2">choose below:</p>
                           <span
-                              :class="{ 'px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white': message.isBot, 'px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600': !message.isBot }">{{
-                                  message.text }}</span>
+                              :class="{ 'message-text': true,
+                                        'px-4 py-2 rounded-lg inline-block rounded-br-none bg-blue-600 text-white': message.isBot,
+                                        'px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600': !message.isBot,
+                                        'cursor-pointer': message.isBot,
+                                      }"
+                                      @click="message.isBot ? appendToInput(message.text.trim(), message.text) : null"                                      
+                                      >
+                                    
+                                        {{message.text }}
+                          </span>
                       </div>
                   </div>
                   
@@ -147,12 +156,31 @@
       this.messages = [];
       this.isChatEnded = true;
       this.userMessage = '';
-    },
+    },     
+     appendToInput(option, messageText) {
+        if (option === 'Contract' || option === 'Supervision') {
+          this.userMessage += ' ' + option;
+        } else if (option === 'Contract Upstairs' || option === 'Contract Downstairs') {
+          this.userMessage += ' ' + messageText;
+        } else if (option === 'Supervision Upstairs' || option === 'Supervision Upstairs') {
+          this.userMessage += ' ' + messageText;
+        } else if (option === 'half' || option === 'full') {
+          this.userMessage += ' ' + messageText;
+        } else {
+          this.userMessage += ' ' + messageText;
+        }
+      },
   },
   };
 
  
   </script>
+
+<style scoped>
+  .chat-message .message-text {
+    white-space: pre-line;
+  }
+</style>
 
 <style>
 .animate-dots:after {
