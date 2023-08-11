@@ -8,25 +8,24 @@ const respondToMessage = (message) => {
     switch (message.toLowerCase().trim()) {
         case "hi":
             case "hello":
-              return `To Begin Select an option below:\n1. Contract\n2. Supervision`;            
-            case "contract":
+              return `To Begin Select an option below:\n1. Contract\n2. Supervision`;   
 
-            //options
+            case "1":
               return `You have selected the contract option.
-              Select an option: \n1.Contract Upstairs \n2.Contract Downstairs`;           
-            case "supervision":          
+              Select an option: \n3.Contract Upstairs \n4.Contract Downstairs`;           
+            case "2":          
               return `You have selected the supervision option.
-              Select an option: \n1.Supervision Upstairs \n2.Supervision Downstairs`;  
+              Select an option: \n5.Supervision Upstairs \n6.Supervision Downstairs`;  
               
             //contract mode
-            case "contract upstairs":
+            case "3":
               return `You have selected the contract upstairs option.
-              Select an option: \n 1.Contract mode`;           
-            case "contract downstairs":
+              Select an option: \n 7.Contract mode`;           
+            case "4":
               return `You have selected the contract downstairs option.
-              Select an option: \n 1.Contract mode`;                   
-            case "contract mode":
-                return `Now select the payment type: \n1.Half \n2.Full`;
+              Select an option: \n 7.Contract mode`;                   
+            case "7":
+                return `Now select the payment type: \nHalf \nFull`;
             case "half":
                 return `voicenote`;
             case "full":
@@ -38,18 +37,18 @@ const respondToMessage = (message) => {
             
  
             //supervision mode
-            case "supervision upstairs":
+            case "5":
                 return `You have selected the supervision upstairs option.
-                    Select an option:\n1.Location`;
-            case "supervision downstairs":
+                    8.Location`;
+            case "6":
                 return `You have selected the supervision downstairs option.
-                    Select an option:\n1.Location`;
-            case "location":
-                return `You have selected the location option.
-                Select an option:\n1.Half service \n2.Full service`;
-            case "half service":
+                    8.Location`;
+            case "8":
+                return `Now select the service type.              
+                  9. Half \n10. Full`;
+            case "half":
                 return `voicenote`;
-            case "full service":
+            case "full":
                 return `voicenote`; 
             case "yes":
                 return `You will be forwarded to a customer care`;
@@ -58,7 +57,7 @@ const respondToMessage = (message) => {
                 
 
             default:
-              return "I did not understand that (Begin a session with Hi or Hello).";
+              return "Sorry I did not understand that.";
     }
   };
   

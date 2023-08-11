@@ -12,13 +12,13 @@
                        <circle cx="8" cy="8" r="8" fill="currentColor"></circle>
                     </svg>
                  </span>
-              <img src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144" alt="" class="w-10 sm:w-16 h-10 sm:h-16 rounded-full">
+              <img loading="lazy" src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144" alt="" class="w-10 sm:w-16 h-10 sm:h-16 rounded-full">
               </div>
               <div class="flex flex-col leading-tight">
                  <div class="text-2xl mt-1 flex items-center">
-                    <span class="text-gray-700 mr-3">Marvel</span>
+                    <span class="text-gray-700 mr-3">Group D</span>
                  </div>
-                 <span class="text-lg text-gray-600">Customer</span>
+                 <!-- <span class="text-lg text-gray-600">Customer</span> -->
               </div>
            </div>   
            <div class="flex items-center space-x-2">            
@@ -47,7 +47,7 @@
                                         'px-4 py-2 rounded-lg inline-block rounded-bl-none bg-gray-300 text-gray-600': !message.isBot,
                                         'cursor-pointer': message.isBot,
                                       }"
-                                      @click="message.isBot ? appendToInput(message.text.trim(), message.text) : null"                                      
+                                      @click="message.isBot  && !message.text.includes('[voicenote]') ? appendToInput(message.text.trim(), message.text) : null"                                      
                                       >
                                     
                                         {{message.text }}
@@ -59,11 +59,11 @@
                       src="https://images.unsplash.com/photo-1549078642-b2ba4bda0cdb?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=3&amp;w=144&amp;h=144"
                       alt="My profile" class="w-6 h-6 rounded-full order-1" />                      
                       
-              </div>
+              </div>             
           </div>  
           <audio ref="audioElement" controls autoplay v-if="showAudio">
             <source src="customer.mp3" type="audio/mp3">                        
-          </audio>         
+          </audio>  
           <div v-if="isLoading" class="mt-4">
             <span class="animate-dots">...</span>
         </div>    
@@ -131,9 +131,10 @@
               // Check if the chatbot response is 'Do you want to be Do you want to be forwarded to a customer care?'
             if (response.data.message.toLowerCase() === 'voicenote') {
               this.showAudio = true;             
-            } else {
-              this.showAudio = false;             
-            }
+            } 
+            // else {
+            //   this.showAudio = false;             
+            // }
              
           }, 1000); // Simulate a response delay of 1 second
         })
